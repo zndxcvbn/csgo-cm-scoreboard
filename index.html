@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite + Svelte + TS</title>
+		<script>
+
+            const names = ['Клифф', 'Мин', 'Громила', 'Гаррет', 'Кремень', 'Волк',
+			'Larry', 'Lester', 'Marvin', 'Neil', 'Niles', 'Oliver', 'Opie', 'Ryan', 'Toby',
+			'Ulric', 'Ulysses', 'Uri', 'Waldo', 'Wally', 'Walt', 'Wesley', 'Yanni', 'Yogi', 'Yuri']
+
+            const clanTags = ['NaVi', 'Astralis', 'Vitality', 'Team Liquid', 'ENCE', 'FaZe Clan', 'NRG Esports', 'FURIA']
+
+            const random = {
+                boolean() {
+                    return Math.random() < 0.5
+                },
+                integer(number) {
+                    return Math.floor(Math.random() * number)
+                },
+            }
+
+            window.cm = {
+                scoreboard: {
+                    GetServerName() {
+                        return 'Freezing-Blood'
+                    },
+                    GetMapName() {
+                        return 'de_dust2'
+                    },
+                    GetWinCondition() {
+                        return 'No limits'
+                    },
+                    GetSTVSpectators() {
+                        return 5
+                    },
+                    GetSpectatorsMuted() {
+                        return false
+                    },
+                    GetPlayerList() {
+                        const players = []
+
+                        for (let i = 1; i < 18; i++) {
+
+                            const player = {
+                                Index: i,
+                                Avatar: i % 2 ? 'https://forum.clientmod.ru/data/avatars/m/1/1662.jpg?1649258547' : null,
+                                UserID: 1 + i,
+                                Connected: i < 3 ? true : random.boolean(),
+                                Alive: random.boolean(),
+                                Team: i == 2 ? 1 : random.integer(4),
+                                Score: random.integer(101),
+                                Deaths: random.integer(101),
+                                Assists: random.integer(101),
+                                Scores: random.integer(101),
+                                Mvps: random.integer(12),
+                                Ping: random.integer(151),
+                                Name: names[i % names.length],
+                                ClanTag: random.boolean() ? clanTags[i % clanTags.length] : null,
+                                FakePlayer: i == 2 ? true : random.boolean(),   // Проверка на бота
+                                STV: i == 2 ? true : false,
+                                Local: i == 1 ? true : false,   // Локальный игрок (т.е Вы)
+                                Money: random.integer(16001),   
+                                ClientMod: random.integer(2),   
+                                Online: random.integer(3),  // 0 - нет, 1 - в процессе подключения, 2 - Подключен к ClientMod Network (для проверки на то почему нет аватарки)
+                                VoiceSpeaking: random.boolean(),    // Игрок говорит в микрофон
+                                VoiceAudible: random.boolean(),     // Игрок не в муте
+                                VoiceBlocked: random.boolean(),     // Игрок в муте
+                            }
+
+                            switch (player.Team) {
+                                case 2:
+                                    player.C4 =
+                                        random.boolean()
+                                    break
+                                case 3:
+                                    player.Defuser =
+                                        random.boolean()
+                                    break
+                            }
+                            players.push(player);
+                        }
+                        return players;
+                    },
+
+                    GetTeamList() {
+                        const teams = []
+
+                        const team0 = {
+                            Score: 0,
+                            Deaths: 0,
+                            Ping: 0,
+                            PlayersCount: 0,
+                            PlayersAlive: 0,
+                            Name: `UNASSIGNED`,
+                        }
+                        const team1 = {
+                            Score: 0,
+                            Deaths: 0,
+                            Ping: 0,
+                            PlayersCount: 0,
+                            PlayersAlive: 0,
+                            Name: `SPEC`,
+                        }
+                        const team2 = {
+                            Score: 20,
+                            Deaths: 0,
+                            Ping: 0,
+                            PlayersCount: 5,
+                            PlayersAlive: 5,
+                            Name: `TERRORIST`,
+                        }
+                        const team3 = {
+                            Score: 10,
+                            Deaths: 0,
+                            Ping: 0,
+                            PlayersCount: 5,
+                            PlayersAlive: 5,
+                            Name: `COUNTER-TERRORIST`,
+                        }
+
+                        teams.push(team0)
+                        teams.push(team1)
+                        teams.push(team2)
+                        teams.push(team3)
+
+                        return teams
+                    },
+                    
+                    Init(callback) {
+                        // setInterval(callback, 2000)
+                        setTimeout(callback)
+                    },
+                    SetCallback(callback) {},
+                    SetUpdateInterval(interval) {}, // Интервал (скорость) обновления данных в табе
+                    SetPlayerMute(playerIndex, /*optional*/ state) {}, // Мут игроку с определенным индексом, опции: false - нет мута, true - мут
+                    ToggleSpectatorsMute() {}, // Функция мута группы наблюдателей (без параметров)
+                    Get() {}, // Позволяет получить голый объект. Например cm.scoreboard.Get().Visible вернет true ил false. (P.S. Get() получает информацию только после первого апдейта, между инициализацией и первым апдейтом значение рано null)
+                },
+                translation: {
+                    Language() {},
+                    Precache() {},
+                    Get() {},
+                },
+                console: {
+                    Log() {},
+                },
+            }
+        </script>
+	</head>
+	<body>
+		<div id="scoreboard"></div>
+		<script type="module" src="/src/main.ts"></script>
+	</body>
+</html>
