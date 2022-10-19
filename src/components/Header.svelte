@@ -21,7 +21,7 @@
 	<div class="top-bottom-flow full-width">
 
 		<div class="full-width bottom-divider meta-row">
-			<img id="id-sb-meta__mode__image" height="36" width="-1" src="{images}/casual.svg" alt="#mode_img">
+			<img id="id-sb-meta__mode__image" src="{images}/casual.svg" alt="#mode_img">
 			<div id="id-sb-meta__labels__mode-map">{cm.translation.Language() === 'russian' ? 'Обычный' : 'Casual'} | {map_name}</div>
 
 			<div class="time_container">
@@ -32,7 +32,7 @@
 		<div class="full-width meta-row">
 			<div id="id-sb-meta__musickit">
 				<img id="id-sb-meta__musickit-image" src="{images}/music_kit.svg" alt="#musickit_img">
-				<div id="id-sb-meta__musickit-name">CS:GO</div>
+				<div id="id-sb-meta__musickit-name">CS:S</div>
 		
 			</div>
 
@@ -42,25 +42,25 @@
 
 				<div class="sb-meta__button-panel__group">
 					<Tooltip content="{cm.translation.Language() === 'russian' ? 'Скрыть имена и аватары незнакомцев' : 'Block names and avatars of strangers'}" position="top" animation="slide" arrow={false}>
-						<button id="id-sb-meta__blockugc" class="sb-meta__button-panel__btn">
-							<img id="id-sb-meta__blockugc__image" src="{images}/{all_mute ? 'votekick' : 'player'}.svg" height='20' width='-1' alt="#scoreboard_blockugc_button" />
-						</button>
+						<span id="id-sb-meta__blockugc" class="sb-meta__button-panel__btn">
+							<img id="id-sb-meta__blockugc__image" src="{images}/{all_mute ? 'votekick' : 'player'}.svg" alt="#scoreboard_blockugc_button" />
+						</span>
 					</Tooltip>
 				</div>
 				
 				<div class="sb-meta__button-panel__group">
 					<Tooltip content="{cm.translation.Language() === 'russian' ? 'Выключить голосовой чат' : 'Disable all voice comms'}" position="top" animation="slide" arrow={false}>
-						<button id="id-sb-meta__mutevoice" class="sb-meta__button-panel__btn" on:click={() => cm.scoreboard.ToggleSpectatorsMute()}>
-							<img id="id-sb-meta__mutevoice__image" src="{images}/{spec_mute ? 'muted' : 'unmuted'}.svg" height='20' width='-1' alt="#scoreboard_mutevoice_button" />
-						</button>
+						<span id="id-sb-meta__mutevoice" class="sb-meta__button-panel__btn" on:click={() => cm.scoreboard.ToggleSpectatorsMute()}>
+							<img id="id-sb-meta__mutevoice__image" src="{images}/{spec_mute ? 'muted' : 'unmuted'}.svg" alt="#scoreboard_mutevoice_button" />
+						</span>
 					</Tooltip>
 				</div>
 				
 				<div class="sb-meta__button-panel__group">
 					<Tooltip content="{cm.translation.Language() === 'russian' ? 'Листать статистику' : 'Cycle stats'}" position="top" animation="slide" arrow={false}>
-						<button id="id-sb-meta__cycle" class="sb-meta__button-panel__btn" on:click={() => cycle_stat = !cycle_stat}>
-							<img src="{images}/stats.svg" height='20' width='-1' alt="#scoreboard_cyclestats_button" />
-						</button>
+						<span id="id-sb-meta__cycle" class="sb-meta__button-panel__btn" on:click={() => cycle_stat = !cycle_stat}>
+							<img src="{images}/stats.svg" alt="#scoreboard_cyclestats_button" />
+						</span>
 					</Tooltip>
 				</div>
 				
@@ -71,7 +71,7 @@
 			<div id="id-sb-meta__labels__server-viewers">
 				{cm.translation.Language() === 'russian' ? 'Сервер' : 'Server'}: {server_name}
 				{#if viewers !== null && viewers !== undefined}
-				{cm.translation.Language() === 'russian' ? 'Зрителей' : 'Viewers'}: {viewers}
+					{cm.translation.Language() === 'russian' ? 'Зрителей' : 'Viewers'}: {viewers}
 				{/if}
 			</div>
 
@@ -84,13 +84,14 @@
 
 
 <style>
+
 	.meta-row {
 		display: flex;
 		align-items: center;
 		/* justify-content: space-between; */
 		
-		padding-top: 4px;
-		padding-bottom: 4px;
+		padding-top: 0.25em; /* 4px */
+		padding-bottom: 0.25em; /* 4px */
 	}
 
 	#id-sb-meta__musickit {
@@ -102,54 +103,54 @@
 	}
 
 	#id-sb-meta__musickit div {
-		font-size: 14px;
+		font-size: 0.875em; /* 14px */
 		
 		color: grey;
 
 		mix-blend-mode: additive;
 	}
 	#id-sb-meta__musickit-image {
-		width: 28px;
-		height: 28px;
+		width: 1.75em;
+		height: 1.75em;
 
-		margin-right: 5px;
+		margin-right: 0.3125em; /* 5px */
 	}
 
 	.sb-meta {
 		width: 100%;
-		height: 75px;
+		height: 4.6875em;
 		vertical-align: top;
 	}
 
 	#id-sb-meta__mode__image {
-		width: 24px;
-		height: 24px;
+		width: 1.5em;
+		height: 1.5em;
 
 		vertical-align: top;
-		margin: 0px 18px 0px 6px;
+		margin: 0px 1.125em 0px 0.375em; /* 0px 1.125em 0px 6px */
 		color-interpolation-filters: sRGB;
 		opacity: 1;			
 	}
 	#id-sb-meta__labels__mode-map {
 		display: flex;
 		/* align-self: center; */
-		font-size: 1.125em;
+		font-size: 1.125em; /* 18px */
 		text-align: left;		
 		color: grey;
 
-		position: 40px 0px 0px;
+		position: 2.222em 0px 0px; /* 40px 0px 0px*/
 
 		font-weight: bold;
 
 		text-overflow: shrink;
-		max-width: 550px;
+		max-width: 30.555em; /* 550px */
 	}	
 
 	.time_container { margin-left: auto }
 
 	#id-sb-meta__labels__server-viewers {
 
-		font-size: 14px;
+		font-size: 0.875em; /* 14px */
 		display: flex;
 		align-self: center;
 		mix-blend-mode: additive;
@@ -167,7 +168,7 @@
 		horizontal-align:right; */
 		margin-left: auto;
 
-		margin-top: 10px;
+		margin-top: 0.625em; /* 10px */
 	}
 	                  
 	.sb-meta__button-panel__group {
@@ -176,14 +177,15 @@
 
 		display: inline-flex;
 
-		margin-left: 10px;
-		height: 26px;
+		margin-left: 0.625em; /* 10px */
+
 
 		/* horizontal-align:right; */
 	}
 
 	.sb-meta__button-panel__btn {
-		padding: 3px;
+		display: flex;
+		padding: 0.1875em; /* 3px */
 
 		background-color: #80808080;
 
@@ -198,12 +200,13 @@
 
 	} */
 	.sb-meta__button-panel__btn img {
-		width: 20px;
-		height: 20px;
+		align-self: center;
+		width: 1.25em; /* 20px */
+		height: 1.25em; /* 20px */
 	}
 
-	.sb-meta__button-panel__btn:hover, button:hover { filter: brightness(2.0) }
+	.sb-meta__button-panel__btn:hover, span:hover { filter: brightness(2.0) }
 
 	:global(.tooltip.tooltip-theme) { --tooltip-font-family: 'Stratum2', Arial, Helvetica, sans-serif }
-	
+
 </style>

@@ -4,6 +4,8 @@
 
     export let cycle_stat: boolean = false
 
+    $: images = './images'
+
 </script>
 
 <div id="id-sb-label-container">
@@ -14,7 +16,7 @@
         </span>
         <span class="label PING">
             <Tooltip content="Ping" position="top" animation="slide" arrow={false}>
-                <img src="./images/ping.svg" alt="#ping">
+                <img src="{images}/ping.svg" alt="#ping">
             </Tooltip>
         </span>
         <span class="label RANK">
@@ -81,7 +83,7 @@
 
 	#id-sb-players-table__labels-row--spacer {
 		width: var(--left-panel-width);
-		margin-right: 10px;
+		margin-right: 0.625em; /* 10px */
 	}
 	.sb-row--labels {
         display: flex;
@@ -94,21 +96,21 @@
 		align-items: flex-end;
 		justify-content: center;
 		/* text-align: center; */
-		font-size: 14px;
-		margin-top: 5px;
+		font-size: 0.875em; /* 14px */
+		margin-top: 0.357em;
 		color: #CCC;
-		width: 45px;
+		width: 3.21em; /* 45px */
 		/* text-overflow: shrink; */
 	}
     .label.STATUS {
         width: var(--row-image-size);
-        padding: 0 2px;
+        padding: 0 0.143em;
     }
-    .label.PING { width: 37px }
+    .label.PING { width: 2.6428em } /* 37px */
     
     .label.RANK {
         width: var(--row-image-size);
-        padding: 0 2px;
+        padding: 0 0.143em;
     }
 	.label.AVATAR {
 		width: var(--row-image-size);
@@ -117,11 +119,16 @@
     .label.NAME { flex: 1 }
 
     .label.MONEY {
-        width: 64px;
+        width: 4.57em; /* 64px */
         margin-left: 0;
     }
-	.label.KILLS, .label.DEATHS, .label.ASSISTS { width: 35px }
-    .label.MVPS { width: 46px }
-    .label.KDR { width: 50px }
-    img { align-items: flex-end }
+	.label.KILLS, .label.DEATHS, .label.ASSISTS { width: 2.5em } /* 35px */
+    .label.MVPS { width: 3.28em } /* 46px */
+    .label.KDR { width: 3.57em } /* 50px */
+    img { align-self: flex-end; width: 1em }
+
+
+
+
+    
 </style>

@@ -47,6 +47,8 @@
 	src: url(/fonts/Arial_Unicode_MS.ttf);
 } */
 
+
+
 :root {
 	--color-CT: #B5D4EE;
 	--color-T: #EAD18A;
@@ -55,7 +57,7 @@
 	--color-css: #ffcc00;
 	--color-cm: #ff9800; */
 
-	--row-image-size: 24px;
+	--row-image-size: 1.5em; /* 24px */
 	--cell-background-dark: #ffffff05;
 	--cell-background-darker: #ffffff05;
 	--cell-background-light: #ffffff08;
@@ -65,11 +67,11 @@
 
 	--localplayer-position: sticky;
 
-	--left-panel-width: 80px;
+	--left-panel-width: 5em; /* 80px */
 
-	--sb-row-width: 830px;
+	--sb-row-width: 51.875em; /* 830px */
 
-	--timeline-round-width: 20px;
+	--timeline-round-width: 1.25em; /* 20px */
 
 	--shadowOffset: fill #000000aa 0px 0px 8px 4px;
 
@@ -98,7 +100,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-image: url(./images/CSGO_Premier_T1.jpg);
+	/* background-image: url(./images/CSGO_Premier_T1.jpg); */
 	background-size: cover;
 }
 
@@ -119,17 +121,14 @@ button {
 	cursor: pointer;
 }
 
-span {
-	cursor: pointer;
-}
 
 a {
 	text-decoration: none;
 }
 
 ::-webkit-scrollbar {
-	width: 8px;
-	margin: 4px 8px;
+	width: 0.5em; /* 8px */
+	margin: 0.25em 0.5em; /* 4px 8px */
 	height: 100%;
 	transition-property: transform, background-color;
 }
@@ -137,8 +136,8 @@ a {
 	background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-	width: 8px;
-	min-height: 32px;
+	width: 0.5em; /* 8px */
+	min-height: 2em; /* 32px */
 	background-color:rgba(255, 255, 255, 0.4);
 	border-radius: 2px;
 	
@@ -152,38 +151,3 @@ a {
 	background-color:rgba(255, 255, 255, 0.6);
 }
 
-/* @media screen and (height: 372px) {
-	#scoreboard {
-		zoom: 0.44444;
-	}
-}
-@media screen and (height: 465px) {
-	#scoreboard {
-		zoom: 0.55555;
-	}
-}
-@media screen and (height: 595px) {
-	#scoreboard {
-		zoom: 0.71111;
-	}
-}
-@media screen and (height: 558px) {
-	#scoreboard {
-		zoom: 0.66666;
-	}
-}
-@media screen and (height: 793px) {
-	#scoreboard {
-		zoom: 0.94814;
-	}
-}
-@media screen and (height: 697px) {
-	#scoreboard {
-		zoom: 0.83333;
-	}
-}
-@media screen and (height: 813px) {
-	#scoreboard {
-		zoom: 0.97222;
-	}
-} */

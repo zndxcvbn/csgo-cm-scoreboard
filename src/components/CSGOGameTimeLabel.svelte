@@ -8,7 +8,7 @@
 
 <style>
     #id-gametime__time {
-		font-size: 18px;
+		font-size: 1.125em; /* 18px */
 
 		font-weight: bold;
 		font-family: 'Stratum2 Bold Monodigit', Arial, Helvetica, sans-serif;
@@ -24,7 +24,8 @@
 
 		/* max-width: 100px; */
 					
-		margin-left: 10px;
+		margin-left: 0.555em; /* 10px */
 		text-overflow: shrink;
 	}
+	
 </style>

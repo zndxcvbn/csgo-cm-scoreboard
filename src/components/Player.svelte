@@ -33,19 +33,20 @@
 </script>
 
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="sb-row {player.Local ? 'localplayer no-hover' : ''} {muteState} {(player.Team == 2 || player.Team == 3) && !player.Alive ? 'sb-player-status-dead' : ''}">
 
     <slot name="stat--STATUS">
         <div data-stat="status" class="sb-row__cell status">
             <slot name="label--STATUS">
                 {#if player.Team == 2 && !player.Alive}
-                    <img src='{images}/terrorist_dead.svg' height="22px" alt="#dead" />
+                    <img src='{images}/terrorist_dead.svg' class="status_img" alt="#dead" />
                 {:else if player.Team == 3 && !player.Alive}
-                    <img src='{images}/ct_dead.svg' height="22px" alt="#dead" />
+                    <img src='{images}/ct_dead.svg' class="status_img" alt="#dead" />
                 {:else if player.Defuser}
-                    <img src='{images}/defuser.svg' height="22px" alt="#defuser" />
+                    <img src='{images}/defuser.svg' class="status_img" alt="#defuser" />
                 {:else if player.C4}
-                    <img src='{images}/bomb_c4.svg' height="22px" alt="#bomb" />
+                    <img src='{images}/bomb_c4.svg' class="status_img" alt="#bomb" />
                 {/if}
             </slot>
         </div>
@@ -192,6 +193,9 @@
 </div>
 
 <style>
+    .status_img {
+        height: 1.375em;
+    }
     .sb-row {
 		display: flex;
         /* flex-direction: row; */
@@ -212,13 +216,14 @@
 
 		/* scroll-snap-align: start; */
 	}
+    
+    .sb-row:not(.no-hover):hover { background-color: rgba(200,200,200,0.05) }
+    
     .sb-row.muted.sb-player-status-dead { background-color: #00000000 }
 
     .sb-row.muted { background-color: #ff00001b }
 
     .sb-row.muted .sb-row__cell{ color: #ff0000a0 }
-
-    .sb-row:not(.no-hover):hover { background-color: rgba(200,200,200,0.05) }
 
     .sb-row.sb-player-status-dead,
     .sb-row.sb-player-status-dead .sb-row__cell:nth-child(n) {
@@ -253,33 +258,35 @@
 
         font-family: 'Stratum2 Regular Monodigit', 'Stratum2', Arial, Helvetica, sans-serif;
 
-        font-size: 16px;
+        font-size: 1em; /* 16px */
 
-        width: 45px;
+        width: 2.8125em; /* 45px */
     }
     .sb-row__cell.ping {
 
         justify-content: center;
-        width: 37px;
+        font-size: 0.875em; /* 14px */
+
+        width: 2.64285em; /* 37px */
 
         color: #888;
-        font-size: 14px;
     }
-    .sb-row__cell.ping.__label--bot { font-size: 12px }
+    .sb-row__cell.ping.__label--bot { font-size: 0.75em; width: 3.08333em } /* 12px */
+
     .sb-row__cell.status {
-        width: calc(var(--row-image-size) + 4px);
-        padding: 2px;
+        width: calc(var(--row-image-size) + 0.25em);
+        padding: 0.125em;
 
         justify-content: left;
         background-size: contain;
     }
     .sb-row__cell.rank {
-        width: calc(var(--row-image-size) + 4px);
-        padding: 2px;
+        width: calc(var(--row-image-size) + 0.25em);
+        padding: 0.125em;
     }
     .avatar {
-        width: calc(var(--row-image-size) - 4px);
-        height: calc(var(--row-image-size) - 4px);
+        width: calc(var(--row-image-size) - 0.25em);
+        height: calc(var(--row-image-size) - 0.25em);
 
         position: relative;
     }
@@ -288,10 +295,10 @@
         white-space: pre;
         justify-content: left;
         text-overflow: ellipsis;
-        max-height: 24px;
-        font-size: 14px;
-        padding-right: 8px;
-        padding-left: 8px;
+        max-height: 1.5em; /* 24px */
+        font-size: 0.875em; /* 14px */
+        padding-right: 0.5em; /* 8px */
+        padding-left: 0.5em; /* 8px */
 
         width: max-content;
         flex: 1;
@@ -299,29 +306,29 @@
     .sb-row__cell.name > span {
         display: flex;
         
-        margin-top: 4px;
+        margin-top: 0.25em;
     }
     .sb-row__cell.money {
-        width: 64px;
+        width: 4em; /* 64px */
         margin-left: auto;
     }
     .sb-row__cell.kills,
     .sb-row__cell.deaths,
-    .sb-row__cell.assists { width: 35px }
+    .sb-row__cell.assists { width: 2.1875em } /* 35px */
 
     .sb-row__cell.mvps {
         position: relative;
-        width: 46px;
+        width: 2.875em; /* 46px */
     }
     .mvps__star {
-        width: 16px;
-        height: 16px;
+        width: 1em; /* 16px */
+        height: 1em; /* 16px */
         /* vertical-align: middle; */
         /* horizontal-align: center; */
     }
     div.mvps__count {
-        /* text-align: center; */
-        font-size: 10px;
+        /* text-align: center; */ 
+        font-size: 10px; 
         position: absolute;
         align-self: flex-start;
 
@@ -341,7 +348,7 @@
 
     .sb-row__cell.hsp { }	
 
-    .sb-row__cell.kdr { width: 50px }
+    .sb-row__cell.kdr { width: 3.125em } /* 50px */
     .sb-row__cell.adr {  }	
     .sb-row__cell.utilitydamage { }	
 
@@ -362,10 +369,16 @@
 
     :global(.tooltip) {
         --tooltip-font-family: 'Stratum2', Arial, Helvetica, sans-serif;
-        --tooltip-font-size: 12px;
+        --tooltip-font-size: 0.75em; /* 12px */
         --tooltip-background-color: rgba(15, 15, 15, 0.99);
-        --tooltip-border-radius: 5px;
+        --tooltip-border-radius: 00.3125em;
         /* --tooltip-padding: 16px; */
     }
 
+
+
+
+
+
+    
 </style>

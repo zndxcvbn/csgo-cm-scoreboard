@@ -10,12 +10,12 @@
 
 <div class="sb-footer-panel">
 	<Tooltip content="none" animation="slide" arrow={false} position="top">
-		<button id="id-sb-footer-server-website">
+		<span id="id-sb-footer-server-website">
 			{#if show_hint}
 				<div class="label">{cm.translation.Language() === 'russian' ? 'Сайт сервера' : 'Server website'}</div>
 				<img src="{images}/link.svg" alt="#link"/>
 			{/if}
-		</button>
+		</span>
 	</Tooltip>
 	<div id="id-sb-mouse-instructions">
 		[MOUSE2] {cm.translation.Language() === 'russian' ? 'Включить курсор' : 'Enable cursor'}
@@ -30,14 +30,14 @@
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
-		height: 48px;
+		height: 3em; /* 48px */
 	}
 
 	#id-sb-mouse-instructions {
 
-		font-size: 12px;
+		font-size: 0.75em; /* 12px */
 
-		margin: 10px;
+		margin: 0.8333em; /* 10px */
 
 		/* horizontal-align: right; */
 
@@ -45,26 +45,37 @@
 
 	}
 	#id-sb-footer-server-website {
-		margin: 10px;
-		display: flex;
+		margin: 0.625em; /* 10px */
+		display: flex; 
 		align-items: center;
 		/* flow-children: right; */
-		padding-top: 4px;
-		padding-bottom: 4px;
+		padding-top: 0.25em;
+		padding-bottom: 0.25em;
 	}
 
 	#id-sb-footer-server-website .label {
-		font-size: 16px;
+		font-size: 1em;
 		color: #ffffff;
-		margin: 2px 10px 2px 10px;
+		margin: 0.125em 0.625em; /* 2px 10px */
 		text-overflow: clip;
 
 		text-transform: uppercase;
 	}
 
 	#id-sb-footer-server-website img {
-		width: 20px;
-		height: 20px;
-		margin-right: 8px;
+		width: 1.25em; /* 20px */
+		height: 1.25em; /* 20px */
+		margin-right: 0.5em; /* 8px */
 	}
+
+	:global(.tooltip) {
+        --tooltip-font-family: 'Stratum2', Arial, Helvetica, sans-serif;
+        --tooltip-font-size: 0.75em; /* 12px */
+        --tooltip-background-color: rgba(15, 15, 15, 0.99);
+        --tooltip-border-radius: 0.3125em; /* 5px */
+        --tooltip-padding: 1em;
+    }
+
+
+
 </style>

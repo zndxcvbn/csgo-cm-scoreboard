@@ -6,7 +6,6 @@
 	
 	import { CSPlayerFilterFunc } from '../helpers'
 	import Player from './Player.svelte'
-	import Labels from './Labels.svelte'
 	
 	$: spectators = (CSPlayerFilterFunc(players, 1).concat(CSPlayerFilterFunc(players, 0))).sort((it1, it2) => { return Number(it2.STV) - Number(it1.STV) })
 	
@@ -16,7 +15,7 @@
 	// $: sb_team_ping__TERRORIST = CSPlayerGetLatencyFunc(terrorists)
 	// $: sb_team_ping__CT = CSPlayerGetLatencyFunc(counterTerrorists)
 
-	$: teamname_SPEC = teams[1] ? teams[1].Name : 0
+	// $: teamname_SPEC = teams[1] ? teams[1].Name : 0
 	$: teamname_TERRORIST = teams[2] ? teams[2].Name : 0
 	$: teamname_CT = teams[3] ? teams[3].Name : 0
 
@@ -32,8 +31,6 @@
 
 </script>
 
-
-<Labels bind:cycle_stat />
 
 <div id="id-sb-team--CT" class="sb-team sb-team--CT">
 
@@ -92,7 +89,7 @@
 				<Player player={spectator} {spec_mute} --cell-background-light="#00000000" --cell-background-lighter="#00000000" --cell-background-dark="#00000000" --localplayer-position="static">
 
 					<div slot="label--STATUS" />
-					<div slot="label--PING" style:font-size="10px" style:text-transform="uppercase">{spectator.STV ? 'STV' : cm.translation.Language() === 'russian' ? 'ЗРИТ' : 'SPEC'}</div>
+					<div slot="label--PING" style:font-size={spectator.FakePlayer ? "0.83333em" : "0.71428em"} style:text-transform="uppercase">{spectator.STV ? 'STV' : cm.translation.Language() === 'russian' ? 'ЗРИТ' : 'SPEC'}</div>
 					<div slot="label--RANK" />
 					<div slot="stat--FLAIR" />
 					<div slot="stat--MONEY" />
@@ -116,7 +113,7 @@
 
 	.sb-team--CT, .sb-color--CT { color: var(--color-CT) }
 
-	.sb-team--CT { margin-bottom: 20px }
+	.sb-team--CT { margin-bottom: 1.25em } /* 20px */
 
 	.sb-team--TERRORIST,
 	.sb-color--TERRORIST { color: var(--color-T) } 
@@ -127,7 +124,7 @@
 		margin-left: 0px;
 	} 
 
-	#id-sb-team--SPEC { padding-top: 20px }
+	#id-sb-team--SPEC { padding-top: 1.25em } /* 20px */
 
 	.sb-players-table {
 		display: flex;
@@ -142,12 +139,12 @@
 	}
 	#players-table-CT,
 	#players-table-TERRORIST {
-		min-height: 120px;
-		max-height: 246px; /*270px*/
+		min-height: 7.5em; /* 120px */
+		max-height: 15.375em; /* orig 270px , real 246px */
 	}
 	#players-table-SPEC {
-		margin-bottom: 20px;
-		max-height: 108px;
+		margin-bottom: 1.25em; /* 20px */
+		max-height: 6.75em; /* 108px */
 	}
 
 
@@ -155,7 +152,7 @@
 		width: var(--left-panel-width);
 		position: relative;
 
-		margin-right: 10px;
+		margin-right: 0.625em; /* 10px */
 
 		background-size: contain;
 		background-repeat: no-repeat;
@@ -168,14 +165,14 @@
 	.sb-team__info__name,
 	.sb-team__info__number {
 
-		font-size: 12px;
+		font-size: 0.75em; /* 12px */
 
-		margin-top: 2px;
+		margin-top: 0.16666em;
 		
 		text-align: center;
 		text-shadow: 1px 1px 1px 1.0 #000000;
 
-		max-width: 90px;
+		max-width:  7.5em; /* 90px */
 		/* overflow: squish noclip; */
 
 	}
@@ -192,9 +189,9 @@
 
 	}
 	.sb-team__info__score .label {
-		font-size: 64px;
+		font-size: 4em; /* 64px */
 		font-weight: bolder;
-		margin-top: 5px;
+		margin-top: 0.078em; /* 5px */
 		text-align: center;
 
 		text-shadow: 2px 2px 3px #00000080;
