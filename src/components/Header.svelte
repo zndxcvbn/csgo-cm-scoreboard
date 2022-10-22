@@ -7,6 +7,7 @@
 	export let viewers: number
 	export let cycle_stat: boolean = false
 
+
 	import { Tooltip } from '@svelte-plugins/tooltips';
 	import CSGOGameTimeLabel from './CSGOGameTimeLabel.svelte'
 	

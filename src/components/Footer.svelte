@@ -12,14 +12,14 @@
 	<Tooltip content="none" animation="slide" arrow={false} position="top">
 		<span id="id-sb-footer-server-website">
 			{#if show_hint}
-				<div class="label">{cm.translation.Language() === 'russian' ? 'Сайт сервера' : 'Server website'}</div>
+				<span class="label">{cm.translation.Language() === 'russian' ? 'Сайт сервера' : 'Server website'}</span>
 				<img src="{images}/link.svg" alt="#link"/>
 			{/if}
 		</span>
 	</Tooltip>
-	<div id="id-sb-mouse-instructions">
+	<span id="id-sb-mouse-instructions">
 		[MOUSE2] {cm.translation.Language() === 'russian' ? 'Включить курсор' : 'Enable cursor'}
-	</div>
+	</span>
 </div>
 
 

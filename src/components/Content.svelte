@@ -3,14 +3,16 @@
 	export let teams
 	export let spec_mute: boolean
 	export let cycle_stat: boolean = false
-	
+
 	import { CSPlayerFilterFunc } from '../helpers'
+
 	import Player from './Player.svelte'
 	
 	$: spectators = (CSPlayerFilterFunc(players, 1).concat(CSPlayerFilterFunc(players, 0))).sort((it1, it2) => { return Number(it2.STV) - Number(it1.STV) })
 	
 	$: terrorists = CSPlayerFilterFunc(players, 2)
 	$: counterTerrorists = CSPlayerFilterFunc(players, 3)
+	
 
 	// $: sb_team_ping__TERRORIST = CSPlayerGetLatencyFunc(terrorists)
 	// $: sb_team_ping__CT = CSPlayerGetLatencyFunc(counterTerrorists)
@@ -20,7 +22,7 @@
 	$: teamname_CT = teams[3] ? teams[3].Name : 0
 
 	$: TERRORIST_team_score = teams[2] ? teams[2].Score : 0
-	$: CT_team_score= teams[3] ? teams[3].Score : 0
+	$: CT_team_score = teams[3] ? teams[3].Score : 0
 	
 	// $: SPEC_total = (teams[1] ? teams[1].PlayersCount - CSPlayerGetSTV(spectators) : 0) + (teams[0] ? teams[0].PlayersCount : 0)
 	$: TERRORIST_total = teams[2] ? teams[2].PlayersCount : 0
@@ -46,8 +48,8 @@
 		<div id="players-table-CT" class="sb-players-table">
 			{#each counterTerrorists as counterTerrorist}
 
-				<Player bind:cycle_stat player={counterTerrorist} --localplayer-background="rgba(0, 166, 255, 0.07)" />
-
+				<Player bind:cycle_stat  bind:player={counterTerrorist} --localplayer-background="rgba(0, 166, 255, 0.07)" />
+				
 			{/each}
 		</div>
 	</div>
@@ -69,7 +71,7 @@
 		<div id="players-table-TERRORIST" class="sb-players-table">
 			{#each terrorists as terrorist}
 
-				<Player bind:cycle_stat player={terrorist} --localplayer-background="rgba(255, 238, 0, 0.07)" />
+				<Player bind:cycle_stat bind:player={terrorist} --localplayer-background="rgba(255, 238, 0, 0.07)" />
 
 			{/each}
 		</div>
@@ -86,7 +88,7 @@
 		<div id="players-table-SPEC" class="sb-players-table">
 			{#each spectators as spectator}
 
-				<Player player={spectator} {spec_mute} --cell-background-light="#00000000" --cell-background-lighter="#00000000" --cell-background-dark="#00000000" --localplayer-position="static">
+				<Player bind:player={spectator} {spec_mute} --cell-background-light="#00000000" --cell-background-lighter="#00000000" --cell-background-dark="#00000000" --localplayer-position="static">
 
 					<div slot="label--STATUS" />
 					<div slot="label--PING" style:font-size={spectator.FakePlayer ? "0.83333em" : "0.71428em"} style:text-transform="uppercase">{spectator.STV ? 'STV' : cm.translation.Language() === 'russian' ? 'ЗРИТ' : 'SPEC'}</div>
@@ -100,7 +102,7 @@
 					<div slot="stat--SCORE" />
 					
 				</Player>
-
+				
 			{/each}
 		</div>
 	</div>
@@ -111,16 +113,13 @@
 <style>
 	.sb-team { display: flex }
 
-	.sb-team--CT, .sb-color--CT { color: var(--color-CT) }
-
 	.sb-team--CT { margin-bottom: 1.25em } /* 20px */
 
-	.sb-team--TERRORIST,
-	.sb-color--TERRORIST { color: var(--color-T) } 
-	.sb-team--SPEC {
-		color: #ffffff;
+	.sb-team--CT, 		 .sb-color--CT 		  { color: var(--color-CT) }
+	.sb-team--TERRORIST, .sb-color--TERRORIST { color: var(--color-T)  } 
 
-		opacity: 0.8;
+	.sb-team--SPEC {
+		color: rgba(255, 255, 255, 0.8);
 		margin-left: 0px;
 	} 
 

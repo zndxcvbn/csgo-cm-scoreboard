@@ -86,45 +86,40 @@
                     },
 
                     GetTeamList() {
-                        const teams = []
-
-                        const team0 = {
-                            Score: 0,
-                            Deaths: 0,
-                            Ping: 0,
-                            PlayersCount: 0,
-                            PlayersAlive: 0,
-                            Name: `UNASSIGNED`,
-                        }
-                        const team1 = {
-                            Score: 0,
-                            Deaths: 0,
-                            Ping: 0,
-                            PlayersCount: 0,
-                            PlayersAlive: 0,
-                            Name: `SPEC`,
-                        }
-                        const team2 = {
-                            Score: 20,
-                            Deaths: 0,
-                            Ping: 0,
-                            PlayersCount: 5,
-                            PlayersAlive: 5,
-                            Name: `TERRORIST`,
-                        }
-                        const team3 = {
-                            Score: 10,
-                            Deaths: 0,
-                            Ping: 0,
-                            PlayersCount: 5,
-                            PlayersAlive: 5,
-                            Name: `COUNTER-TERRORIST`,
-                        }
-
-                        teams.push(team0)
-                        teams.push(team1)
-                        teams.push(team2)
-                        teams.push(team3)
+                        const teams = [
+                            team0 = {
+                                Score: 0,
+                                Deaths: 0,
+                                Ping: 0,
+                                PlayersCount: 0,
+                                PlayersAlive: 0,
+                                Name: `UNASSIGNED`,
+                            },
+                            team1 = {
+                                Score: 0,
+                                Deaths: 0,
+                                Ping: 0,
+                                PlayersCount: 0,
+                                PlayersAlive: 0,
+                                Name: `SPEC`,
+                            },
+                            team2 = {
+                                Score: 20,
+                                Deaths: 0,
+                                Ping: 0,
+                                PlayersCount: 5,
+                                PlayersAlive: 5,
+                                Name: `TERRORIST`,
+                            },
+                            team3 = {
+                                Score: 10,
+                                Deaths: 0,
+                                Ping: 0,
+                                PlayersCount: 5,
+                                PlayersAlive: 5,
+                                Name: `COUNTER-TERRORIST`,
+                            }
+                        ]
 
                         return teams
                     },

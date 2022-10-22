@@ -40,7 +40,6 @@
 		map_name = cm.scoreboard.GetMapName()
 	}
 
-
 </script>
 
 <div class="sb-main">
@@ -55,8 +54,6 @@
 	.sb-main {
 		width: min-content;
 		height: min-content;
-
-		position: relative;
 
 		min-width: 37.5em; /* 600px */
 		padding-top: 1.25em; /* 20px */

@@ -62,8 +62,10 @@
 	--cell-background-darker: #ffffff05;
 	--cell-background-light: #ffffff08;
 	--cell-background-lighter: #FFFFFF10;
+	--positiveColor: #4caf50;
 
 	--contextMenuBackground: rgba(44, 44, 44, 0.98);
+	--btnBorderRadius: 2px;
 
 	--localplayer-position: sticky;
 
@@ -107,8 +109,19 @@ body {
 .full-width {
 	width: 100%;
 }
-.bottom-divider{
+.bottom-divider {
 	border-bottom: 1px solid #80808030;
+}
+.stratum-font {
+	font-family: 'Stratum2', Arial, Helvetica, sans-serif;
+}
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+.center {
+	align-items: center;
+	justify-content: center;
 }
 
 button {
@@ -125,6 +138,7 @@ button {
 a {
 	text-decoration: none;
 }
+
 
 ::-webkit-scrollbar {
 	width: 0.5em; /* 8px */

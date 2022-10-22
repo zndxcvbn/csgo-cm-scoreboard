@@ -2,9 +2,7 @@
 	export let text: string = '';	
 </script>
 
-<span id="id-gametime__time">
-    {text}
-</span>
+<span id="id-gametime__time">{text}</span>
 
 <style>
     #id-gametime__time {

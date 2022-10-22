@@ -2,39 +2,37 @@
     export let player
     export let spec_mute: boolean = false
     export let cycle_stat: boolean = false
+    export let show_contextmenu: boolean = false
 
-    let team: string
+    import ContextMenuPlayerCard from "./ContextMenuPlayerCard.svelte"
 
+    const teamsName: string[] = [
+        'SPEC', 
+        'SPEC', 
+        'TERRORIST', 
+        'CT',
+    ]
+
+    let pos = { x: 0, y: 0 };
+
+    $: playerAvatar = player.Avatar ? player.Avatar : player.Online == 1 ? `${images+'/unknown.png'}` : `${images+'/avatar-'+team+(team == 'SPEC' ? '.svg' : '.png')}`    
     $: muteState = !player.Local ? (player.VoiceBlocked ? 'muted' : 'unmuted') : '' || spec_mute ? 'muted' : ''
-
+    $: team = player.ClientMod !== 1 ? teamsName[player.Team] : 'CM'
     $: images = '/images'
-    
-    if (player.ClientMod !== 1) {
-        switch (player.Team) {
-            case 0:
-            case 1:
-                team = 'SPEC'
-                break;
-
-            case 2:
-                team = 'TERRORIST'
-                break;
-            case 3:
-                team = 'CT'
-                break;
-
-            default:
-                break;
-        }
-    } else {
-        team = 'CM'
-    }
 
 </script>
 
+{#if show_contextmenu}
+    <ContextMenuPlayerCard {player} {...pos} on:close="{() => show_contextmenu = false}">
+
+
+    </ContextMenuPlayerCard>
+{/if}
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="sb-row {player.Local ? 'localplayer no-hover' : ''} {muteState} {(player.Team == 2 || player.Team == 3) && !player.Alive ? 'sb-player-status-dead' : ''}">
+<div class="sb-row {player.Local ? 'localplayer no-hover' : ''} {muteState} {(player.Team == 2 || player.Team == 3) && !player.Alive ? 'sb-player-status-dead' : ''}" 
+    on:click={() => show_contextmenu = true}
+    on:click={e => pos = { x: e.clientX, y: e.clientY }} >
 
     <slot name="stat--STATUS">
         <div data-stat="status" class="sb-row__cell status">
@@ -66,9 +64,9 @@
         </div>
     </slot>
     <slot name="stat--AVATAR">
-        <div data-stat="avatar" class="sb-row__cell avatar" on:click={cm.scoreboard.SetPlayerMute(player.Index)}>
+        <div data-stat="avatar" class="sb-row__cell avatar">
             <slot name="label--AVATAR">
-                <img class="avatar {player.Online == 0 ? 'unknown' : ''}" src={player.Avatar ? player.Avatar : player.Online == 1 ? `${images+'/unknown.png'}` : `${images+'/avatar-'+team+(team == 'SPEC' ? '.svg' : '.png')}`} alt="#">
+                <img class="avatar {player.Online == 0 ? 'unknown' : ''}"  style:border="{player.Local ? '0.10em solid #fff' : 'none'}" src={playerAvatar} alt="#">
                 {#if muteState == 'muted' || spec_mute}
                     <img class="avatar__muted" src="{images}/muted.svg" alt="#mute">
                 {/if}
@@ -100,7 +98,7 @@
         <div data-stat="money" class="sb-row__cell money">
             <slot name="label--MONEY">
                 {#if player.Money !== -1}
-                ${player.Money}
+                    ${player.Money}
                 {/if}
             </slot>
         </div>
@@ -217,14 +215,15 @@
 		/* scroll-snap-align: start; */
 	}
     
-    .sb-row:not(.no-hover):hover { background-color: rgba(200,200,200,0.05) }
     
     .sb-row.muted.sb-player-status-dead { background-color: #00000000 }
-
+    
     .sb-row.muted { background-color: #ff00001b }
-
+    
     .sb-row.muted .sb-row__cell{ color: #ff0000a0 }
-
+    
+    .sb-row:not(.no-hover):hover { background-color: rgba(200,200,200,0.05) }
+    
     .sb-row.sb-player-status-dead,
     .sb-row.sb-player-status-dead .sb-row__cell:nth-child(n) {
         background-color: #00000000;
@@ -287,7 +286,7 @@
     .avatar {
         width: calc(var(--row-image-size) - 0.25em);
         height: calc(var(--row-image-size) - 0.25em);
-
+    
         position: relative;
     }
     .sb-row__cell.name {
@@ -352,6 +351,11 @@
     .sb-row__cell.adr {  }	
     .sb-row__cell.utilitydamage { }	
 
+    .avatarProfile {
+        width: 5em;
+        height: 5em;
+    }
+
     .avatar .avatar__muted {
         width: 80%;
         height: 80%;
@@ -371,14 +375,15 @@
         --tooltip-font-family: 'Stratum2', Arial, Helvetica, sans-serif;
         --tooltip-font-size: 0.75em; /* 12px */
         --tooltip-background-color: rgba(15, 15, 15, 0.99);
-        --tooltip-border-radius: 00.3125em;
+        --tooltip-border-radius: 0.3125em;
         /* --tooltip-padding: 16px; */
     }
 
+    .nameProfile {
+        color: whitesmoke;
+        display: inline-flex;
+        font-size: 1.1em;
+        padding: 0 0.7em;
+    }
 
-
-
-
-
-    
 </style>
