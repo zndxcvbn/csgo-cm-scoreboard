@@ -66,7 +66,7 @@
     <slot name="stat--AVATAR">
         <div data-stat="avatar" class="sb-row__cell avatar">
             <slot name="label--AVATAR">
-                <img class="avatar {player.Online == 0 ? 'unknown' : ''}"  style:border="{player.Local ? '0.10em solid #fff' : 'none'}" src={playerAvatar} alt="#">
+                <img class="avatar {player.Online == 0 ? 'unknown' : ''}" src={playerAvatar} alt="#">
                 {#if muteState == 'muted' || spec_mute}
                     <img class="avatar__muted" src="{images}/muted.svg" alt="#mute">
                 {/if}

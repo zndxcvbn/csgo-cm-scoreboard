@@ -31,7 +31,6 @@
 <style>
     .player-card-prime-upsell-container
     {
-        flow-children: down;
 
         transition-property: height;
         transition-duration: .25s;
@@ -43,7 +42,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        flow-children: right;
+
         margin-bottom: 1em; /* 16px */
     }
 
@@ -61,7 +60,7 @@
         height: 2.625em; /* 42px */
         width: fit-content;
         vertical-align: center;
-        horizontal-align: center;
+
         opacity: .5;
     }
 

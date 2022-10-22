@@ -88,12 +88,12 @@
 
     .player-card-nonprime__lock
     {
-        horizontal-align: center;
+        /* horizontal-align: center; */
         vertical-align: bottom;
         display: flex;
         align-items: top;
                                         
-        /* visibility: collapse; */
+        visibility: collapse;
     }
 
 

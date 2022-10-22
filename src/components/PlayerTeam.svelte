@@ -30,7 +30,7 @@
         border-top: 1px solid rgba(0, 0, 0, 0.26);
         width: fit-content;
         height: fit-content;
-        flow-content: right;
+
         padding: 0.5em 0px 0.5em 1em; /* 8px 0 8px 16px */
 
         opacity: 1;
@@ -38,7 +38,7 @@
     }
     .player-card-team__text
     {
-        flow-content: down;
+
         vertical-align: middle;
         width: fit-content;
         max-width: 20em; /* 320px */
@@ -49,7 +49,7 @@
     {
         width: 4em; /* 64px */
         height: 4em; /* 64px */
-        flow-content: right;
+ 
     }
     .player-card__text-subtitle
     {
@@ -80,6 +80,6 @@
     {
         height: fit-content;
         width: 100%;
-        horizontal-align: left;
+
     }
 </style>

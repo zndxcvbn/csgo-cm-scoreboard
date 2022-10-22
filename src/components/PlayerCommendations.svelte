@@ -36,8 +36,7 @@
         opacity: 1;
         visibility: visible;
         width: 100%;
-        flow-content: right;
-        horizontal-align: left;
+
     }
     
     .player-card-commendations
@@ -50,8 +49,7 @@
         max-height: 8.25em; /* 132px */
         width: fit-content;
         vertical-align: middle;
-        horizontal-align: left;
-        flow-content: right;
+
         margin-left: 1.5em; /* 24px */
     }
 
@@ -59,7 +57,7 @@
     {
         opacity: 1;
         visibility: visible;
-        flow-content: right;
+
         width: fit-content;
         margin: 1em; /* 16px */
     }

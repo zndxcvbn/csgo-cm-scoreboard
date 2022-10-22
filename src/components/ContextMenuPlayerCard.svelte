@@ -42,7 +42,7 @@
         <div class="IconButton">
             {#if !player.Local}
             <button on:click={cm.scoreboard.SetPlayerMute(player.Index)}>
-                <img height="32" width="-1" src="{images}/{player.VoiceBlocked ? 'muted' : 'unmuted'}.svg" alt="#voice">
+                <img src="{images}/{player.VoiceBlocked ? 'muted' : 'unmuted'}.svg" alt="#voice">
             </button>
             {/if}
         </div>
@@ -65,6 +65,11 @@
         width: 2.46em;
         height: 2.46em;
     }
+    img {
+        width: 2.46em;
+        height: 2.46em;
+    }
+    
 
     .modal-background {
 		position: fixed;
